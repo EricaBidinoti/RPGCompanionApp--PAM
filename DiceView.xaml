@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RPGCompanionApp.View.DiceView">
+
+    <ScrollView>
+    <VerticalStackLayout>
+    <Label 
+        Text="TIPO DE DADO E QUANTIDADE A ROLAR!!!"
+        VerticalOptions="Center" 
+        HorizontalOptions="Center" />
+
+     <Entry Placeholder= "Quantidade de dados: " Text= "{Binding quantidadeDeDados}"/>
+
+    <Picker
+     Title:"Escolha a quantidade de faces do seu dado" SelectedItem = "{Binding quantidadeDeLados}"/>
+    <Picker.ItemsSource
+       <x:Array Type="{X: Type x:Int16}">
+            <x:Int16>4</x:Int16>
+            <x:Int16>6</x:Int16>
+            <x:Int16>8</x:Int16>
+            <x:Int16>10</x:Int16>
+            <x:Int16>12</x:Int16>
+            <x:Int16>20</x:Int16>
+            <x:Int16>100</x:Int16>
+       </x:Array>
+       </Picker.ItemsSource>
+       </Picker>
+        
+    <Label Text="{Binding Total}"/>
+        
+    <Button Text="Clique para rolar o dado"
+     Command= "{Binding RolarDadosCommand}"/>
+        
+    <CollectionView ItemsSource="{Binding listaDeDados}"/>
+       <CollectionView.ItemTemplate>
+          <DataTemplate>
+             <VerticalStackLayout>
+                <Label Text="{Binding numeroSorteado}"
+             </VerticalStackLayout>
+           </DataTemplate>
+       </CollectionView.ItemTemplate>
+
+    </VerticalStackLayout>
+    </ScrollView>
+</ContentView>
